@@ -1,0 +1,5 @@
+NLG4Patch
+---------
+
+The goal of this project is to generate from a (unified) diff input,
+a natural language description of the changes implied by the patch.
