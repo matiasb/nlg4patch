@@ -8,7 +8,7 @@
 import os.path
 import unittest2
 
-from unidiff_parser import parser
+from nlg4patch.unidiff import parser
 
 
 class TestUnidiffParser(unittest2.TestCase):

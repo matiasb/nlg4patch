@@ -8,7 +8,7 @@
 import os.path
 import unittest2
 
-from unidiff_parser.patch import Hunk
+from nlg4patch.unidiff.patch import Hunk
 
 
 class TestHunk(unittest2.TestCase):
