@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+# Author: Matías Bordese
+
+
 """Useful constants and regexes used by the module."""
 
 import re

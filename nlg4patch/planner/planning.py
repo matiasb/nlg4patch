@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+# Author: Matías Bordese
+
+
 import os.path
 
 from nlg4patch.unidiff.patch import PatchedFile

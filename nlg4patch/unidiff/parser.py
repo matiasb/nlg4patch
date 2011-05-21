@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+# Author: Matías Bordese
+
+
 """Unified diff parser module."""
 
 import re

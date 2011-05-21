@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# Author: Matías Bordese
+
 """Classes used by the unified diff parser to keep the diff data."""
 
 import difflib

@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# Author: Matías Bordese
+
 
 ADDITION = 2
 DELETION = 2

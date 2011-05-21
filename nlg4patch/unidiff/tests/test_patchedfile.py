@@ -1,7 +1,5 @@
-#encoding
-#author
-#copyright
-#license
+# -*- coding: utf-8 -*-
+# Author: Matías Bordese
 
 """Tests for PatchedFile."""
 
