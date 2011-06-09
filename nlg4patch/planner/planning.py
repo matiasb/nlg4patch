@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Author: Matías Bordese
 
+"""Content Planning module."""
 
 import os.path
 
@@ -40,7 +41,15 @@ class DirectoryMessage(list):
 
     @property
     def file_extensions(self):
-        return set([f.extension for f in self])
+        return set([f.extension.strip() for f in self])
+
+    @property
+    def added_file_extensions(self):
+        return set([f.extension.strip() for f in self if f.added])
+
+    @property
+    def deleted_file_extensions(self):
+        return set([f.extension.strip() for f in self if f.deleted])
 
     @property
     def score(self):
@@ -91,22 +100,4 @@ def content_planning(patch):
     sorted_messages = sorted((msg for msg in messages.itervalues()),
                              key=lambda m: m.score, reverse=True)
 
-    # pop and set relations
     return sorted_messages
-
-
-# microplanning
-# dir_focus
-# if len(sorted_messages) == 1:
-#    "all the updated files are from the D directory"
-#    "only one file from the D directory is updated"
-
-# directory desc: extensions, number of files, 1 of N
-# distribution phrase: blocks, additions, deletions, modifications (aleatoriamente: totalize, summarize)
-
-# to_be(subject, object=None, from=None)
-# to_have(subject, object)
-# to_distribute(subject, object, pasive)
-# to_update(subject, object, pasive)
-# to_add(subject, object, pasive)
-# to_deleted(subject, object, pasive)

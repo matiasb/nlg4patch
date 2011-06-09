@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Author: Matías Bordese
 
-
+# scores for each kind of operation found
 ADDITION = 2
 DELETION = 2
 MODIFICATION = 1
