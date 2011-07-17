@@ -3,3 +3,20 @@ NLG4Patch
 
 The goal of this project is to generate from a (unified) diff input,
 a natural language description of the changes implied by the patch.
+
+
+>>> from nlg4patch.unidiff import parse_unidiff
+>>> from nlg4patch.planner import content_planning
+>>> from nlg4patch.microplanner import microplanning
+>>> 
+>>> with open('sample.diff') as f:
+>>>     patch_info = parse_unidiff(f)
+>>>     plan = content_planning(patch_info)
+>>>     micro = microplanning(plan)
+>>>     for p in micro:
+>>>         print p.realise()
+
+There is 1 modified file from 1 directory. All changes are summarized
+in 10 additions, 6 deletions and 2 modifications.
+There is 1 updated file in directory /path/to and it has no extension.
+All changes are summarized in 10 additions, 6 deletions and 2 modifications.
