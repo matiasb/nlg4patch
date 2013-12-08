@@ -1,20 +1,22 @@
-"""Takes a URL with a unidiff and returns generated text (possibly cached"""
+"""Takes a URL with a unidiff and returns generated text (possibly cached)."""
 
-import SocketServer
 import SimpleHTTPServer
-import urllib
+import SocketServer
 import os
+import urllib
 
-from nlg4patch.unidiff import parse_unidiff
-from nlg4patch.planner import content_planning
 from nlg4patch.microplanner import microplanning
+from nlg4patch.planner import content_planning
+from nlg4patch.unidiff import parse_unidiff
+
 
 PORT = 7473
 JOURNAL = dict()
 
+
 class NLG4PatchServer(SimpleHTTPServer.SimpleHTTPRequestHandler):
-    """Minimalist nlg4patch server"""
-    
+    """Minimalist nlg4patch server."""
+
     def do_GET(self):
         if self.path[0:6] != '/?url=':
             self.send_response(400, 'Missing URL')
@@ -32,7 +34,7 @@ class NLG4PatchServer(SimpleHTTPServer.SimpleHTTPRequestHandler):
             for para in micro:
                 text += para.realise() + "\n"
             url_file.close()
-            
+
             with open('journal.log', 'a') as jf2:
                 jf2.write(url + '\t' + text.replace("\n","\\n"))
             JOURNAL[url] = text
@@ -41,11 +43,13 @@ class NLG4PatchServer(SimpleHTTPServer.SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(text)
 
+
 if os.path.exists('journal.log'):
     with open('journal.log') as jf:
         for line in jf:
             (journal_url, journal_text) = line.split("\t")
             JOURNAL[journal_url] = journal_text.replace("\\n", "\n")
+
 
 HTTPD = SocketServer.ForkingTCPServer(('', PORT), NLG4PatchServer)
 print "Try me: http://localhost:%s/?url=http://hg.python.org/cpython/raw-rev/1b1818fee351" % (PORT)
